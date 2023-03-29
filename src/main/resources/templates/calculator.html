@@ -4,7 +4,7 @@
     <title>calculator</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
-<body bgcolor="#009933">
+<body>
 
 <h1>Simple:</h1>
 <form action="#" th:action="@{/calculator}" th:object="${operationModel}" method="POST">
@@ -23,11 +23,15 @@
     <p>
         <input type="submit" class="button" name="fibonacci" value="fib"/>
         <input type="submit" class="button" name="factorial" value="!"/>
-        <input type="submit" class="button" name="sqrt" value=&#8730 />
+        <!-- The below was resulting in a parsing error. -->
+        <!-- <input type="submit" class="button" name="sqrt" value=&#8730 /> -->
+        <input type="submit" class="button" name="sqrt" value="sqrt" />
         <input type="submit" class="button" name="power" value="^"/>
         <input type="submit" class="button" name="clearAdvanced" value="C"/>
     </p>
-    <h1><p th:text="'result: ' + ${result}"/></h1>
+    <h1>
+        <p th:text="${result}"></p>
+    </h1>
 </form>
 </body>
 </html>
