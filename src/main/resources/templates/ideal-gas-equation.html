@@ -29,7 +29,7 @@
                     <input id="volume" th:field="*{volume}" class="form-control" th:classappend="${#fields.hasErrors('${idealGasEquation.volume}') ? 'is-invalid' : ''}" aria-describedby="volume-hint">
                     <div id="volume-hint" class="form-text" th:classappend="${#fields.hasErrors('${idealGasEquation.volume}') ? 'invalid-feedback' : ''}">Enter a value that is greater or equal to 0</div>
                   </div>
-                  <!-- todo: temperature input (easy) -->
+                 <!--temperature done-->
                   <div class="mb-3">
                     <label for="temperature" class="form-label">Temperature (T)</label>
                     <input id="temperature" th:field="*{temperature}" class="form-control" th:classappend="${#fields.hasErrors('${idealGasEquation.temperature}') ? 'is-invalid' : ''}" aria-describedby="temperature-hint">
