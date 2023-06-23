@@ -4,7 +4,6 @@ import javax.validation.constraints.Min;
 
 public class ConcentrationEquation {
     // Data
-
     @Min(value = 0)
     private double concentration;
     @Min(value = 0)
@@ -57,5 +56,4 @@ public class ConcentrationEquation {
         this.isEmpty = false;
         // todo: do the rest later
     }
-
 }

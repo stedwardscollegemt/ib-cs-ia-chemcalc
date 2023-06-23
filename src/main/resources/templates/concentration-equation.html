@@ -30,8 +30,8 @@
                   </div>
                  <div class="mb-3">
                     <label for="volume" class="form-label">Volume (V)</label>
-                    <input id="volume" th:field="*{volume}" aria-describedby="volume-hint">
-                    <div id="volume-hint" class="form-text">Enter a value that is greater or equal to 0</div>
+                    <input id="volume" th:field="*{volume}" class="form-control" th:classappend="${#fields.hasErrors('${concentrationEquation.volume}') ? 'is-invalid' : ''}" aria-describedby="volume-hint">
+                    <div id="volume-hint" class="form-text"th:classappend="${#fields.hasErrors('${concentrationEquation.volume}') ? 'is-invalid' : ''}">Enter a value that is greater or equal to 0</div>
                   </div>
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
