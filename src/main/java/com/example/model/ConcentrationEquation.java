@@ -1,10 +1,17 @@
 package com.example.model;
 
+import javax.validation.constraints.Min;
+
 public class ConcentrationEquation {
     // Data
+
+    @Min(value = 0)
     private double concentration;
-    private double mass;
+    @Min(value = 0)
+    private double numberOfMoles;
+    @Min(value = 0)
     private double volume;
+    @Min(value = 0)
     private boolean isEmpty;
 
     // Constructor
@@ -21,19 +28,19 @@ public class ConcentrationEquation {
         return this.concentration;
     }
 
-    public void setMass(double mass) {
-        this.mass = mass;
+    public void setNumberOfMoles(double numberOfMoles) {
+        this.numberOfMoles = numberOfMoles;
     }
 
-    public double getMass() {
-        return this.mass;
+    public double getNumberOfMoles() {
+        return this.numberOfMoles;
     }
 
     public void setVolume(double volume) {
         this.volume = volume;
     }
 
-    public double getVOlume() {
+    public double getVolume() {
         return this.volume;
     }
 
@@ -46,7 +53,7 @@ public class ConcentrationEquation {
     }
 
     public void calc() {
-        this.concentration = (this.mass / this.volume);
+        this.concentration = (this.numberOfMoles / this.volume);
         this.isEmpty = false;
         // todo: do the rest later
     }

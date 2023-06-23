@@ -8,21 +8,26 @@ import javax.validation.constraints.Min;
 
 // todo: https://kodejava.org/how-do-i-listen-for-beans-property-change-event/ (advanced)
 @JavaBean // https://en.wikibooks.org/wiki/Java_Programming/JavaBeans
-public class IdealGasEquation { 
+public class IdealGasEquation {
     /**
      * Data
      */
     public static final double R = 8.314; // the ideal gas constant
 
     @Min(value = 0)
-    private double volume; // volume
+    private double volume; // volume dcm cubed
 
-    // todo: https://www.geeksforgeeks.org/spring-boot-validation-using-hibernate-validator/ (medium)
-    private double temperature; // temperature
+    // todo:
+    // https://www.geeksforgeeks.org/spring-boot-validation-using-hibernate-validator/
+    // (medium)
+    @Min(value = 0)
+    private double temperature; // temperature Kelvin
 
+    @Min(value = 0)
     private double numberOfMoles; // number of moles
 
-    private double pressure; // pressure
+    @Min(value = 0)
+    private double pressure; // pressure kPa
 
     private boolean isEmpty;
 
