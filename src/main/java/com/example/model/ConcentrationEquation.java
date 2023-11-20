@@ -7,11 +7,13 @@ public class ConcentrationEquation {
     @Min(value = 0)
     private double concentration;
     @Min(value = 0)
-    private double numberOfMoles;
+    private double moles;
     @Min(value = 0)
     private double volume;
     @Min(value = 0)
     private boolean isEmpty;
+
+    // private conversion dcm;
 
     // Constructor
     public ConcentrationEquation() {
@@ -27,12 +29,12 @@ public class ConcentrationEquation {
         return this.concentration;
     }
 
-    public void setNumberOfMoles(double numberOfMoles) {
-        this.numberOfMoles = numberOfMoles;
+    public void setMoles(double moles) {
+        this.moles = moles;
     }
 
-    public double getNumberOfMoles() {
-        return this.numberOfMoles;
+    public double getMoles() {
+        return this.moles;
     }
 
     public void setVolume(double volume) {
@@ -51,9 +53,27 @@ public class ConcentrationEquation {
         return this.isEmpty;
     }
 
-    public void calc() {
-        this.concentration = (this.numberOfMoles / this.volume);
+    public double calc() {
+        // TODO: while loop the whole thingymbob
         this.isEmpty = false;
-        // todo: do the rest later
+        if (this.moles > 0 && this.volume > 0) {
+            this.concentration = (this.moles / this.volume);
+            return this.concentration;
+
+        } else if (this.concentration > 0 && this.volume > 0) {
+            this.moles = (this.concentration * this.volume);
+            return this.moles;
+
+        } else if (this.concentration > 0 && this.moles > 0) {
+            this.volume = (this.moles / this.concentration);
+            return this.volume;
+
+        }
+        return 0;
+    }
+
+    public void convert() {
+        // TODO: create conversion rates for the variables
+
     }
 }
