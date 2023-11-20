@@ -4,13 +4,13 @@ import javax.validation.constraints.Min;
 
 public class ConcentrationEquation {
     // Data
-    @Min(value = 0)
+    // @Min(value = 0)
     private double concentration;
-    @Min(value = 0)
+    // @Min(value = 0)
     private double moles;
-    @Min(value = 0)
+    // @Min(value = 0)
     private double volume;
-    @Min(value = 0)
+    // @Min(value = 0)
     private boolean isEmpty;
 
     // private conversion dcm;
@@ -53,23 +53,20 @@ public class ConcentrationEquation {
         return this.isEmpty;
     }
 
-    public double calc() {
+    public void calc() {
         // TODO: while loop the whole thingymbob
         this.isEmpty = false;
         if (this.moles > 0 && this.volume > 0) {
             this.concentration = (this.moles / this.volume);
-            return this.concentration;
 
         } else if (this.concentration > 0 && this.volume > 0) {
             this.moles = (this.concentration * this.volume);
-            return this.moles;
 
         } else if (this.concentration > 0 && this.moles > 0) {
             this.volume = (this.moles / this.concentration);
-            return this.volume;
 
         }
-        return 0;
+
     }
 
     public void convert() {

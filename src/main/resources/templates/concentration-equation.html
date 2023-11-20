@@ -29,7 +29,7 @@
           <div class="card shadow-lg">
               <div class="card-body">
                   <form action="#" th:action="@{/concentration-equation}" method="POST" th:object="${concentrationEquation}">
-                    <input id="is-empty" th:field="*{isEmpty}" type="text" hidden/>
+                    <!--<input id="is-empty" th:field="*{isEmpty}" type="text" hidden/>-->
                     <div class="mb-3">
                       <label for="concentration" class="form-label">Concentration (C)</label>
                       <div class="row">
@@ -54,7 +54,7 @@
                       <label for="Moles" class="form-label">Moles (M)</label>
                       <div class="row">
                         <div class="col-auto">
-                          <input id="Moles" th:field="*{Moles}" class="form-control" th:classappend="${#fields.hasErrors('${concentrationEquation.moles}') ? 'is-invalid' : ''}" aria-describedby="Moles-hint">
+                          <input id="Moles" th:field="*{moles}" class="form-control" th:classappend="${#fields.hasErrors('${concentrationEquation.moles}') ? 'is-invalid' : ''}" aria-describedby="Moles-hint">
                         </div>
                         <div class="col-auto">
                           <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
