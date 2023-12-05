@@ -8,17 +8,18 @@
     <title>Concentration Equation</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link th:href="@{/style/style-sheet.css}" rel="stylesheet"></link>
-    <!-- Google fonts-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
+    <link th:href="@{/style/style-sheet.css}" rel="stylesheet"/>
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet"/>
+    <!-- Temporary stylesheet replacement since, line-11 ain't working... -->
     <style> 
         body {
           background-color: rgb(34, 112, 148);
           font-family: 'Courier Prime', monospace;
         }
-    </style> <!-- Temporary stylesheet replacement since, line-11 aint working... -->
+    </style> 
   </head>
   <body>
     <div class="container-fluid">
@@ -28,8 +29,9 @@
            <!-- https://getbootstrap.com/docs/5.3/layout/grid/#example -->
           <div class="card shadow-lg">
               <div class="card-body">
-                  <form action="#" th:action="@{/concentration-equation}" method="POST" th:object="${concentrationEquation}">
-                    <!--<input id="is-empty" th:field="*{isEmpty}" type="text" hidden/>-->
+                  <form id="form-concentration-equation" action="#" th:action="@{/concentration-equation}" method="POST" th:object="${concentrationEquation}" th:fragment="form">
+                    <input th:if="${concentrationEquation.isEmpty}" id="is-empty" type="text" value="true" hidden/>
+                    <input th:if="${!concentrationEquation.isEmpty}" id="is-empty" type="text" value="false" hidden/>
                     <div class="mb-3">
                       <label for="concentration" class="form-label">Concentration (C)</label>
                       <div class="row">
@@ -51,10 +53,10 @@
                       
                     </div>
                    <div class="mb-3">
-                      <label for="Moles" class="form-label">Moles (M)</label>
+                      <label for="moles" class="form-label">Moles (M)</label>
                       <div class="row">
                         <div class="col-auto">
-                          <input id="Moles" th:field="*{moles}" class="form-control" th:classappend="${#fields.hasErrors('${concentrationEquation.moles}') ? 'is-invalid' : ''}" aria-describedby="Moles-hint">
+                          <input id="moles" th:field="*{moles}" class="form-control" th:classappend="${#fields.hasErrors('${concentrationEquation.moles}') ? 'is-invalid' : ''}" aria-describedby="moles-hint" oninput="inputHandler('moles')">
                         </div>
                         <div class="col-auto">
                           <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
@@ -73,7 +75,7 @@
                       <label for="volume" class="form-label">Volume (V)</label>
                       <div class="row">
                         <div class="col-auto">
-                          <input id="volume" th:field="*{volume}" class="form-control" th:classappend="${#fields.hasErrors('${concentrationEquation.volume}') ? 'is-invalid' : ''}" aria-describedby="volume-hint">
+                          <input id="volume" th:field="*{volume}" class="form-control" th:classappend="${#fields.hasErrors('${concentrationEquation.volume}') ? 'is-invalid' : ''}" aria-describedby="volume-hint" oninput="inputHandler('volume')">
                         </div>
                         <div class="col-auto">
                           <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
@@ -88,7 +90,7 @@
                         </div>
                       </div>                                  
                     </div>  
-                    <button type="submit" class="btn btn-primary">Submit</button>               
+                    <button type="submit" class="btn btn-primary">Submit</button> 
                   </form>
               </div>
           </div>
@@ -103,8 +105,33 @@
         </div>
       </div>
     </div> 
-    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script th:src="@{/script/index.js}"></script>
+    <script th:inline="javascript">
+      /*<![CDATA[*/
+      function inputHandler(id) {
+          var input = document.getElementById(id).value;
+
+          // Make an AJAX request to the server-side endpoint
+          var xhr = new XMLHttpRequest();
+          xhr.onreadystatechange = function () {
+              // when we get a response from the controller
+              if (xhr.readyState === XMLHttpRequest.DONE) {
+                  if (xhr.status === 200) {
+                      // update the form to reflect the changed values
+                      document.getElementById('form-concentration-equation').innerHTML = xhr.responseText;
+                      console.log("[Concentration Equation] Info: Successful update.")
+                  } else {
+                      console.error('[Concentration Equation] Error:', xhr.status, xhr.statusText);
+                  }
+              }
+          };
+
+          // trigger our update method in the controller
+          xhr.open('PUT', '/concentration-equation?attribute=' + id + '&newValue=' + encodeURI(input), true);
+          xhr.send();
+      }
+      /*]]>*/
+    </script>
   </body>
 </html>

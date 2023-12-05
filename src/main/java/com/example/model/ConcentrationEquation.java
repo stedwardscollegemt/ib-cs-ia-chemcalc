@@ -2,7 +2,13 @@ package com.example.model;
 
 import javax.validation.constraints.Min;
 
-public class ConcentrationEquation {
+import com.example.model_observer.ModelChangeListener;
+
+/**
+ * TODO: Have a section in Criterion C for JavaBeans
+ * source: https://www.geeksforgeeks.org/javabean-class-java/ 
+ */
+public class ConcentrationEquation extends ModelChangeListener {
     // Data
     // @Min(value = 0)
     private double concentration;
@@ -69,8 +75,30 @@ public class ConcentrationEquation {
 
     }
 
+    public void updateConcentration() {
+        if (this.volume > 0) {
+            this.concentration = this.moles / this.volume;
+        }
+    }
+
     public void convert() {
         // TODO: create conversion rates for the variables
 
+    }
+
+    @Override
+    public void onModelChange(String attributeName, String newValue) {
+        if(!newValue.isEmpty()) {
+            // the model has been updated to unset flag
+            this.isEmpty = false;
+            // try to perform model updates
+            if (attributeName.equals("moles")) {
+                this.moles = Double.parseDouble(newValue);
+                updateConcentration();
+            } else if (attributeName.equals("volume")) {
+                this.volume = Double.parseDouble(newValue);
+                updateConcentration();
+            }
+        }
     }
 }
