@@ -50,10 +50,10 @@
             <!-- https://getbootstrap.com/docs/5.3/layout/grid/#example -->
             <div class="card shadow-lg">
                 <div class="card-body">
-                    <form id="form-concentration-equation" action="#" th:action="@{/concentration-equation}"
-                          method="POST" th:object="${concentrationEquation}" th:fragment="form">
-                        <input th:if="${concentrationEquation.isEmpty}" id="is-empty" type="text" value="true" hidden/>
-                        <input th:if="${!concentrationEquation.isEmpty}" id="is-empty" type="text" value="false"
+                    <form id="form-home-page" action="#" th:action="@{/home-page}"
+                          method="POST" th:object="${homePage}" th:fragment="form">
+                        <input th:if="${homePage.isEmpty}" id="is-empty" type="text" value="true" hidden/>
+                        <input th:if="${!homePage.isEmpty}" id="is-empty" type="text" value="false"
                                hidden/>
                         <div class="mb-3">
                             <label for="concentration" class="form-label">Concentration (C)</label>
@@ -169,58 +169,7 @@
         crossorigin="anonymous"></script>
 <script th:src="@{/script/index.js}"></script>
 <script th:inline="javascript">
-    /*<![CDATA[*/
-    function inputHandler(id) {
-        var input = document.getElementById(id).value;
-
-        // Make an AJAX request to the server-side endpoint
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
-            // when we get a response from the controller
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    // update the form to reflect the changed values
-                    document.getElementById('form-concentration-equation').innerHTML = xhr.responseText;
-                    console.log("[Concentration Equation] Info: Successful update.")
-                } else {
-                    console.error('[Concentration Equation] Error:', xhr.status, xhr.statusText);
-                }
-            }
-        };
-
-        // trigger our update method in the controller
-        xhr.open('PUT', '/concentration-equation?attribute=' + id + '&newValue=' + encodeURI(input), true);
-        xhr.send();
-    }
-
-    function dropdownHandler(propertyName, value) {
-        console.log("[Dropdown Handler] " + propertyName + value);
-
-        // Make an AJAX request to the server-side endpoint
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
-            // when we get a response from the controller
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    // update the form to reflect the changed values
-                    document.getElementById('form-concentration-equation').innerHTML = xhr.responseText;
-                    console.log("[Concentration Equation] Info: Successful update.")
-                } else {
-                    console.error('[Concentration Equation] Error:', xhr.status, xhr.statusText);
-                }
-            }
-        };
-
-        // trigger our update method in the controller
-        xhr.open('PUT', '/concentration-equation?attribute=' + propertyName + '&newValue=' + encodeURI(value), true);
-        xhr.send();
-    }
-
-    function navigateToCalculator(row) {
-        // Add your logic to navigate to the respective calculator based on the row clicked
-        console.log('Navigate to Calculator:', row);
-    }
-// TODO: Fix the dropdown menus to show the current unit
+    
 </script>
 </body>
 </html>

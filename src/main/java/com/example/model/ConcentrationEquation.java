@@ -115,7 +115,7 @@ public class ConcentrationEquation extends ModelChangeListener {
             this.volumeUnit = "mililitres";
         }
     } 
-    // TODO: convert moleUnit
+
     public void convertMoleUnit(String toUnit, String fromUnit) {
         if (fromUnit.equals ("grams") && toUnit.equals ("kilograms")) {
             this.moles = this.moles / 1000;
@@ -140,7 +140,7 @@ public class ConcentrationEquation extends ModelChangeListener {
     // TODO: convert concentrationUnit
     public void convertConcentrationUnit(String toUnit, String fromUnit) {
         if (fromUnit.equals ("g/l") && toUnit.equals ("kg/kl")) {
-            
+
         } else if (fromUnit.equals ("kg/kl") && toUnit.equals ("g/l")) {
 
         } else if (fromUnit.equals ("mg/ml") && toUnit.equals ("g/l")) {
