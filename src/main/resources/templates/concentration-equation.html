@@ -91,7 +91,7 @@
                                             data-bs-toggle="dropdown" aria-expanded="false">Dropdown
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a class="dropdown-item" href="#">cm^3</a></li>
+                                        <li><a class="dropdown-item" href="#" onclick="dropdownHandler('moleUnit', 'grams')">grams</a></li>
                                         <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item" href="#">dcm^-3</a></li>
                                         <li><hr class="dropdown-divider"></li>
@@ -110,13 +110,13 @@
                                            aria-describedby="volume-hint" oninput="inputHandler('volume')">
                                 </div>
                                 <div class="col-auto">
-                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button"
+                                    <option class="btn btn-outline-secondary dropdown-toggle" type="button"
                                             data-bs-toggle="dropdown" aria-expanded="false">Dropdown
-                                    </button>
+                                    </option>
                                     <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a class="dropdown-item" href="#">cm^3</a></li>
+                                        <li><a class="dropdown-item" href="#" onclick="dropdownHandler('volumeUnit', 'litres')">litres</a></li>
                                         <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="#">dcm^-3</a></li>
+                                        <li><a class="dropdown-item" href="#" onclick="dropdownHandler('volumeUnit', 'kilolitres')">kilolitres</a></li>
                                         <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item" href="#">thing</a></li>
                                         <li><hr class="dropdown-divider"></li>
@@ -188,6 +188,29 @@
 
         // trigger our update method in the controller
         xhr.open('PUT', '/concentration-equation?attribute=' + id + '&newValue=' + encodeURI(input), true);
+        xhr.send();
+    }
+
+    function dropdownHandler(propertyName, value) {
+        console.log("[Dropdown Handler] " + propertyName + value);
+
+        // Make an AJAX request to the server-side endpoint
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            // when we get a response from the controller
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    // update the form to reflect the changed values
+                    document.getElementById('form-concentration-equation').innerHTML = xhr.responseText;
+                    console.log("[Concentration Equation] Info: Successful update.")
+                } else {
+                    console.error('[Concentration Equation] Error:', xhr.status, xhr.statusText);
+                }
+            }
+        };
+
+        // trigger our update method in the controller
+        xhr.open('PUT', '/concentration-equation?attribute=' + propertyName + '&newValue=' + encodeURI(value), true);
         xhr.send();
     }
 
