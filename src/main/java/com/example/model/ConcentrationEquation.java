@@ -139,7 +139,19 @@ public class ConcentrationEquation extends ModelChangeListener {
     }
     // TODO: convert concentrationUnit
     public void convertConcentrationUnit(String toUnit, String fromUnit) {
+        if (fromUnit.equals ("g/l") && toUnit.equals ("kg/kl")) {
+            
+        } else if (fromUnit.equals ("kg/kl") && toUnit.equals ("g/l")) {
 
+        } else if (fromUnit.equals ("mg/ml") && toUnit.equals ("g/l")) {
+
+        } else if (fromUnit.equals ("g/l") && toUnit.equals ("mg/ml")) {
+
+        } else if (fromUnit.equals ("mg/ml") && toUnit.equals ("kg/kl")) {
+
+        } else if (fromUnit.equals ("kg/kl") && toUnit.equals ("mg/ml")) {
+
+        }
     }
 
     @Override
@@ -150,21 +162,41 @@ public class ConcentrationEquation extends ModelChangeListener {
             // try to perform model updates
             if (attributeName.equals("moles")) {
                 this.moles = Double.parseDouble(newValue);
-                updateConcentration();
+                if (volume > 0) {
+                    updateConcentration();
+                } else if (concentration > 0) {
+                    updateVolume();
+                }
             } else if (attributeName.equals("volume")) {
                 this.volume = Double.parseDouble(newValue);
-                updateConcentration();
+                if (concentration > 0) {
+                    updateMole();
+                } else if (moles > 0) {
+                    updateConcentration();
+                }
             } else if (attributeName.equals("concentration")) {
                 this.concentration = Double.parseDouble(newValue);
-                updateVolume();
+                if (volume > 0) {
+                    updateMole();
+                } else if (moles > 0) {
+                    updateVolume();
+                }
             } else if (attributeName.equals("volumeUnit")) {
                 String volumeUnitTemp = this.volumeUnit;
                 convertVolumeUnit(newValue, volumeUnitTemp);
-                updateConcentration();
+                if (concentration > 0) {
+                    updateMole();
+                } else if (moles > 0) {
+                    updateConcentration();
+                }
             } else if (attributeName.equals("moleUnit")) {
                 String moleUnitTemp = this.moleUnit;
                 convertMoleUnit(newValue, moleUnitTemp);
-                updateConcentration();
+                if (volume > 0) {
+                    updateConcentration();
+                } else if (concentration > 0) {
+                    updateVolume();
+                }
             } else if (attributeName.equals("concentrationUnit")) {
                 String concentrationUnitTemp = this.concentrationUnit;
                 convertConcentrationUnit(newValue, concentrationUnitTemp);

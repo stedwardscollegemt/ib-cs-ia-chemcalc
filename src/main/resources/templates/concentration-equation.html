@@ -59,19 +59,20 @@
                             <label for="concentration" class="form-label">Concentration (C)</label>
                             <div class="row">
                                 <div class="col-auto">
-                                    <input id="concentration" th:field="*{concentration}" type="number"
-                                           class="form-control" aria-describedby="concentration-hint">
+                                    <input id="concentration" th:field="*{concentration}"class="form-control"
+                                           th:classappend="${#fields.hasErrors('${concentrationEquation.concentration}') ? 'is-invalid' : ''}"
+                                           aria-describedby="concentration-hint" oninput="inputHandler('concentration')">
                                 </div>
                                 <div class="col-auto">
                                     <option class="btn btn-outline-secondary dropdown-toggle" type="button"
-                                            data-bs-toggle="dropdown" aria-expanded="false">Dropdown
+                                            data-bs-toggle="dropdown" aria-expanded="false">Unit
                                     </option>
                                     <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a class="dropdown-item" href="#">cm^3</a></li>
+                                        <li><a class="dropdown-item" href="#"onclick="dropdownHandler('concentrationUnit', 'mg/ml')">mg/ml</a></li>
                                         <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="#">dcm^-3</a></li>
+                                        <li><a class="dropdown-item" href="#" onclick="dropdownHandler('concentrationUnit', 'g/l')">g/l</a></li>
                                         <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="#">thing</a></li>
+                                        <li><a class="dropdown-item" href="#"onclick="dropdownHandler('concentrationUnit', 'kg/kl')">kg/kl</a></li>
                                         <li><hr class="dropdown-divider"></li>
                                     </ul>
                                 </div>
@@ -88,7 +89,7 @@
                                 </div>
                                 <div class="col-auto">
                                     <option class="btn btn-outline-secondary dropdown-toggle" type="button"
-                                            data-bs-toggle="dropdown" aria-expanded="false">Dropdown
+                                            data-bs-toggle="dropdown" aria-expanded="false">Unit
                                     </option>
                                     <ul class="dropdown-menu dropdown-menu-end">
                                         <li><a class="dropdown-item" href="#" onclick="dropdownHandler('moleUnit', 'miligrams')">miligrams</a></li>
@@ -111,20 +112,20 @@
                                 </div>
                                 <div class="col-auto">
                                     <option class="btn btn-outline-secondary dropdown-toggle" type="button"
-                                            data-bs-toggle="dropdown" aria-expanded="false">Dropdown
+                                            data-bs-toggle="dropdown" aria-expanded="false">Unit
                                     </option>
                                     <ul class="dropdown-menu dropdown-menu-end">
                                         <li><a class="dropdown-item" href="#" onclick="dropdownHandler('volumeUnit', 'mililitres')">mililitres</a></li>
                                         <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item" href="#" onclick="dropdownHandler('volumeUnit', 'litres')">litres</a></li>
                                         <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="#" onclick="dropdownHandler('volumeUnit', 'kilolitres')">kilolitres</a>/a></li>
+                                        <li><a class="dropdown-item" href="#" onclick="dropdownHandler('volumeUnit', 'kilolitres')">kilolitres</a></li>
                                         <li><hr class="dropdown-divider"></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="button" id="resetButton"class="btn btn-primary" onClick="window.location.reload();">Reset</button>
                     </form>
                 </div>
             </div>
@@ -135,15 +136,16 @@
                 <div class="card-body">
                     <p>
                         C = M/V
+                        <br><br>
                         c: This represents the concentration of the solution and is measured in units such as moles per
                         liter (mol/L) or grams per liter (g/L), depending on the context.
-
+                        <br><br>
                         m: This stands for the mass of the solute, which is the substance being dissolved in the
                         solution. The unit for mass can be grams (g) or any other appropriate unit of mass.
-
+                        <br><br>
                         v: This represents the volume of the solution and is measured in liters (L) or any other suitable
                         unit of volume.
-
+                        <br><br>
                         To use the concentration equation, you need to ensure that the units of mass (m) and volume (v)
                         are consistent.
                     </p>
@@ -154,9 +156,9 @@
             <div class="card mt-3">
                 <div class="card-body">
                     <h4>Other Calculators</h4>
-                    <div class="interactive-row" onclick="navigateToCalculator('row1')">Row 1 - Calculator 1</div>
-                    <div class="interactive-row" onclick="navigateToCalculator('row2')">Row 2 - Calculator 2</div>
-                    <div class="interactive-row" onclick="navigateToCalculator('row3')">Row 3 - Calculator 3</div>
+                    <div class="interactive-row" onclick="navigateToCalculator('row1')">Home Page</div>
+                    <div class="interactive-row" onclick="navigateToCalculator('row2')">Calculator 2</div>
+                    <div class="interactive-row" onclick="navigateToCalculator('row3')">Calculator 3</div>
                 </div>
             </div>
         </div>
