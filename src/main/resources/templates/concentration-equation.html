@@ -63,9 +63,9 @@
                                            class="form-control" aria-describedby="concentration-hint">
                                 </div>
                                 <div class="col-auto">
-                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button"
+                                    <option class="btn btn-outline-secondary dropdown-toggle" type="button"
                                             data-bs-toggle="dropdown" aria-expanded="false">Dropdown
-                                    </button>
+                                    </option>
                                     <ul class="dropdown-menu dropdown-menu-end">
                                         <li><a class="dropdown-item" href="#">cm^3</a></li>
                                         <li><hr class="dropdown-divider"></li>
@@ -87,15 +87,15 @@
                                            aria-describedby="moles-hint" oninput="inputHandler('moles')">
                                 </div>
                                 <div class="col-auto">
-                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button"
+                                    <option class="btn btn-outline-secondary dropdown-toggle" type="button"
                                             data-bs-toggle="dropdown" aria-expanded="false">Dropdown
-                                    </button>
+                                    </option>
                                     <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><a class="dropdown-item" href="#" onclick="dropdownHandler('moleUnit', 'miligrams')">miligrams</a></li>
+                                        <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item" href="#" onclick="dropdownHandler('moleUnit', 'grams')">grams</a></li>
                                         <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="#">dcm^-3</a></li>
-                                        <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="#">thing</a></li>
+                                        <li><a class="dropdown-item" href="#" onclick="dropdownHandler('moleUnit', 'kilograms')">kilograms</a></li>
                                         <li><hr class="dropdown-divider"></li>
                                     </ul>
                                 </div>
@@ -114,11 +114,11 @@
                                             data-bs-toggle="dropdown" aria-expanded="false">Dropdown
                                     </option>
                                     <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><a class="dropdown-item" href="#" onclick="dropdownHandler('volumeUnit', 'mililitres')">mililitres</a></li>
+                                        <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item" href="#" onclick="dropdownHandler('volumeUnit', 'litres')">litres</a></li>
                                         <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="#" onclick="dropdownHandler('volumeUnit', 'kilolitres')">kilolitres</a></li>
-                                        <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="#">thing</a></li>
+                                        <li><a class="dropdown-item" href="#" onclick="dropdownHandler('volumeUnit', 'kilolitres')">kilolitres</a>/a></li>
                                         <li><hr class="dropdown-divider"></li>
                                     </ul>
                                 </div>
@@ -219,7 +219,6 @@
         console.log('Navigate to Calculator:', row);
     }
 
-    /*]]>*/
 </script>
 </body>
 </html>
