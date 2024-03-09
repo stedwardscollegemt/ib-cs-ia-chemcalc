@@ -19,9 +19,9 @@ public class ConcentrationEquation extends ModelChangeListener {
     // @Min(value = 0)
     private boolean isEmpty;
 
-    private String volumeUnit = "litres";
-    private String moleUnit = "grams";
-    private String concentrationUnit = "g/l";
+    private String volumeUnit = "decimeters^3"; 
+    private String moleUnit = "mol";
+    private String concentrationUnit = "mol/dcm^3";
 
     // Constructor
     public ConcentrationEquation() {
@@ -93,30 +93,30 @@ public class ConcentrationEquation extends ModelChangeListener {
             this.moles = this.volume * this.concentration;
         }
     }
-
+    // centimeters^3 < decimeters^3 < meters^3
     public void convertVolumeUnit(String toUnit, String fromUnit) {
-        if (fromUnit.equals ("litres") && toUnit.equals ("kilolitre")) {
-            this.volume = this.volume / 1000;
-            this.volumeUnit = "kilolitre";
-        } else if (fromUnit.equals ("kilolitres") && toUnit.equals ("litres")) {
-            this.volume = this.volume * 1000;
-            this.volumeUnit = "litres";
-        } else if (fromUnit.equals ("mililitres") && toUnit.equals ("litres")) {
-            this.volume = this.volume / 1000;
-            this.volumeUnit = "litres";
-        } else if (fromUnit.equals ("litres") && toUnit.equals ("mililitres")) {
-            this.volume = this.volume * 1000;
-            this.volumeUnit = "mililitres";
-        } else if (fromUnit.equals ("mililitres") && toUnit.equals ("kilolitres")) {
+        if (fromUnit.equals ("centimeters^3") && toUnit.equals ("meters^3")) {
             this.volume = this.volume / 1000000;
-            this.volumeUnit = "kilolitres";
-        } else if (fromUnit.equals ("kilolitres") && toUnit.equals ("mililitres")) {
+            this.volumeUnit = "meters^3";
+        } else if (fromUnit.equals ("meters^3") && toUnit.equals ("centimeters^3")) {
             this.volume = this.volume * 1000000;
-            this.volumeUnit = "mililitres";
+            this.volumeUnit = "centimeters^3";
+        } else if (fromUnit.equals ("decimeters^3") && toUnit.equals ("centimeters^3")) {
+            this.volume = this.volume * 1000;
+            this.volumeUnit = "centimeters^3";
+        } else if (fromUnit.equals ("centimeters^3") && toUnit.equals ("decimeters^3")) {
+            this.volume = this.volume / 1000;
+            this.volumeUnit = "decimeters^3";
+        } else if (fromUnit.equals ("decimeters^3") && toUnit.equals ("meters^3")) {
+            this.volume = this.volume / 1000;
+            this.volumeUnit = "meters^3";
+        } else if (fromUnit.equals ("meters^3") && toUnit.equals ("decimeters^3")) {
+            this.volume = this.volume * 1000;
+            this.volumeUnit = "decimeters^3";
         }
     } 
 
-    public void convertMoleUnit(String toUnit, String fromUnit) {
+   /*  public void convertMoleUnit(String toUnit, String fromUnit) {
         if (fromUnit.equals ("grams") && toUnit.equals ("kilograms")) {
             this.moles = this.moles / 1000;
             this.moleUnit = "kilograms";
@@ -136,20 +136,20 @@ public class ConcentrationEquation extends ModelChangeListener {
             this.moles = this.moles * 1000000;
             this.moleUnit = "miligrams";
         }
-    }
+    } */
     // TODO: convert concentrationUnit
     public void convertConcentrationUnit(String toUnit, String fromUnit) {
-        if (fromUnit.equals ("g/l") && toUnit.equals ("kg/kl")) {
+        if (fromUnit.equals ("mol/decimeters^3") && toUnit.equals ("mol/meters^3")) {
 
-        } else if (fromUnit.equals ("kg/kl") && toUnit.equals ("g/l")) {
+        } else if (fromUnit.equals ("mol/meters^3") && toUnit.equals ("mol/decimeters^3")) {
 
-        } else if (fromUnit.equals ("mg/ml") && toUnit.equals ("g/l")) {
+        } else if (fromUnit.equals ("mol/centimeters^3") && toUnit.equals ("mol/decimeters^3")) {
 
-        } else if (fromUnit.equals ("g/l") && toUnit.equals ("mg/ml")) {
+        } else if (fromUnit.equals ("mol/decimeters^3") && toUnit.equals ("mol/centimeters^3")) {
 
-        } else if (fromUnit.equals ("mg/ml") && toUnit.equals ("kg/kl")) {
+        } else if (fromUnit.equals ("mol/centimeters^3") && toUnit.equals ("mol/meters^3")) {
 
-        } else if (fromUnit.equals ("kg/kl") && toUnit.equals ("mg/ml")) {
+        } else if (fromUnit.equals ("mol/meters^3") && toUnit.equals ("mol/centimeters^3")) {
 
         }
     }
@@ -188,14 +188,6 @@ public class ConcentrationEquation extends ModelChangeListener {
                     updateMole();
                 } else if (moles > 0) {
                     updateConcentration();
-                }
-            } else if (attributeName.equals("moleUnit")) {
-                String moleUnitTemp = this.moleUnit;
-                convertMoleUnit(newValue, moleUnitTemp);
-                if (volume > 0) {
-                    updateConcentration();
-                } else if (concentration > 0) {
-                    updateVolume();
                 }
             } else if (attributeName.equals("concentrationUnit")) {
                 String concentrationUnitTemp = this.concentrationUnit;
