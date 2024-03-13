@@ -25,7 +25,6 @@ public class ConcentrationEquation extends ModelChangeListener {
 
     // Constructor
     public ConcentrationEquation() {
-        // todo: put in default values that make sense...
         this.isEmpty = true;
     }
 
@@ -51,6 +50,14 @@ public class ConcentrationEquation extends ModelChangeListener {
 
     public double getVolume() {
         return this.volume;
+    }
+
+    public String getVolumeUnit() {
+        return this.volumeUnit;
+    }
+
+    public void setVolumeUnit(String volumeUnit) {
+        this.volumeUnit = volumeUnit;
     }
 
     public void setIsEmpty(boolean isEmpty) {
@@ -137,21 +144,32 @@ public class ConcentrationEquation extends ModelChangeListener {
             this.moleUnit = "miligrams";
         }
     } */
-    // TODO: convert concentrationUnit
     public void convertConcentrationUnit(String toUnit, String fromUnit) {
-        if (fromUnit.equals ("mol/decimeters^3") && toUnit.equals ("mol/meters^3")) {
-
-        } else if (fromUnit.equals ("mol/meters^3") && toUnit.equals ("mol/decimeters^3")) {
-
-        } else if (fromUnit.equals ("mol/centimeters^3") && toUnit.equals ("mol/decimeters^3")) {
-
-        } else if (fromUnit.equals ("mol/decimeters^3") && toUnit.equals ("mol/centimeters^3")) {
-
-        } else if (fromUnit.equals ("mol/centimeters^3") && toUnit.equals ("mol/meters^3")) {
-
-        } else if (fromUnit.equals ("mol/meters^3") && toUnit.equals ("mol/centimeters^3")) {
-
+        if (fromUnit.equals ("mol/dcm^3") && toUnit.equals ("mol/m^3")) {
+            this.concentration = this.concentration * 1000;
+            this.concentrationUnit = "mol/m^3";
+        } else if (fromUnit.equals ("mol/m^3") && toUnit.equals ("mol/dcm^3")) {
+            this.concentration = this.concentration / 1000;
+            this.concentrationUnit = "mol/dcm^3";
+        } else if (fromUnit.equals ("mol/cm^3") && toUnit.equals ("mol/dcm^3")) {
+            this.concentration = this.concentration * 1000;
+            this.concentrationUnit = "mol/dcm^3";
+        } else if (fromUnit.equals ("mol/dcm^3") && toUnit.equals ("mol/cm^3")) {
+            this.concentration = this.concentration / 1000;
+            this.concentrationUnit = "mol/cm^3";
+        } else if (fromUnit.equals ("mol/cm^3") && toUnit.equals ("mol/m^3")) {
+            this.concentration = this.concentration * 1000000;
+            this.concentrationUnit = "mol/m^3";
+        } else if (fromUnit.equals ("mol/m^3") && toUnit.equals ("mol/cm^3")) {
+            this.concentration = this.concentration / 1000000;
+            this.concentrationUnit = "mol/cm^3";
         }
+    }
+
+    // TODO: Create a method to notify the user that the Units must be changed to be equal. (When a unit is changed, check that
+    // the units are equal)
+    public void checkUnits() {
+
     }
 
     @Override
@@ -197,7 +215,7 @@ public class ConcentrationEquation extends ModelChangeListener {
                 } else if (moles > 0) {
                     updateVolume();
                 }
-            } // TODO: Check that the SI units are the same before updating
+            }
         }
     }
 }

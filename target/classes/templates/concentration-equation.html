@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet"/>
-    <!-- Temporary stylesheet replacement since, line-11 ain't working... -->
+    <!-- Temporary stylesheet replacement since, line-11 isn't working... -->
     <style>
         body {
             background-color: rgb(34, 112, 148);
@@ -44,7 +44,6 @@
 </head>
 <body>
 <div class="container-fluid">
-    <!-- <h3> Concentration Equation </h3> -->
     <div class="row p-5">
         <div class="col"> <!-- left column -->
             <!-- https://getbootstrap.com/docs/5.3/layout/grid/#example -->
@@ -68,12 +67,11 @@
                                             data-bs-toggle="dropdown" aria-expanded="false">Unit
                                     </option>
                                     <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a class="dropdown-item" href="#"onclick="dropdownHandler('concentrationUnit', 'mol/centimeters^3')">mol/cm^3</a></li>
+                                        <li><a class="dropdown-item" href="#"onclick="dropdownHandler('concentrationUnit', 'mol/cm^3')">mol/cm^3</a></li>
                                         <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="#" onclick="dropdownHandler('concentrationUnit', 'mol/decimeters^3')">mol/dcm^3</a></li>
+                                        <li><a class="dropdown-item" href="#" onclick="dropdownHandler('concentrationUnit', 'mol/dcm^3')">mol/dcm^3</a></li>
                                         <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="#"onclick="dropdownHandler('concentrationUnit', 'mol/meters^3')">mol/m^3</a></li>
-                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="#"onclick="dropdownHandler('concentrationUnit', 'mol/m^3')">mol/m^3</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -115,8 +113,12 @@
                                         <li><a class="dropdown-item" href="#" onclick="dropdownHandler('volumeUnit', 'decimeters^3')">decimeters^3</a></li>
                                         <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item" href="#" onclick="dropdownHandler('volumeUnit', 'meters^3')">meters^3</a></li>
-                                        <li><hr class="dropdown-divider"></li>
                                     </ul>
+                                    <select id="volumeUnit" th:field="*{volumeUnit}" onchange="dropdownHandler()">
+                                        <option value="centimeters^3">centimeters^3</option>
+                                        <option value="decimeters^3">decimeters^3</option>
+                                        <option value="meters^3">meters^3</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -132,15 +134,16 @@
                     <p>
                         C = M/V
                         <br><br>
-                        c: This represents the concentration of the solution and is measured in units such as moles per
-                        liter (mol/L) or grams per liter (g/L), depending on the context.
+                        c: This represents the concentration of the solution and is measured in units such as moles per 
+                        decimeter^3 (mol/dcm^3) or moles per centimeter^3 (mol/cm^3), depending on the context.
                         <br><br>
-                        m: 
+                        m: This represents the number of moles (Moles) of the solution. It only has one specific unit (mols) 
+                        and does not change at all.
                         <br><br>
-                        v: This represents the volume of the solution and is measured in liters (dcm^3) or any other suitable
+                        v: This represents the volume of the solution and is measured in decimeters^3 (dcm^3) or any other suitable
                         unit of volume.
                         <br><br>
-                        To use the concentration equation, 
+                        To use the concentration equation, input the respective variables, then convert this into your desired unit.
                     </p>
                 </div>
             </div>
@@ -213,7 +216,7 @@
         // Add your logic to navigate to the respective calculator based on the row clicked
         console.log('Navigate to Calculator:', row);
     }
-// TODO: Fix the dropdown menus to show the current unit
 </script>
 </body>
 </html>
+// TODO: Fix the dropdown menus to show the current unit
