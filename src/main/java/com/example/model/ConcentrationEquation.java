@@ -19,7 +19,7 @@ public class ConcentrationEquation extends ModelChangeListener {
     // @Min(value = 0)
     private boolean isEmpty;
 
-    private String volumeUnit = "decimeters^3"; 
+    private String volumeUnit = "dcm^3"; 
     private String moleUnit = "mol";
     private String concentrationUnit = "mol/dcm^3";
 
@@ -58,6 +58,14 @@ public class ConcentrationEquation extends ModelChangeListener {
 
     public void setVolumeUnit(String volumeUnit) {
         this.volumeUnit = volumeUnit;
+    }
+
+    public String getConcentrationUnit() {
+        return this.concentrationUnit;
+    }
+
+    public void setConcentrationUnit(String concentrationUnit) {
+        this.concentrationUnit = concentrationUnit;
     }
 
     public void setIsEmpty(boolean isEmpty) {
@@ -102,24 +110,24 @@ public class ConcentrationEquation extends ModelChangeListener {
     }
     // centimeters^3 < decimeters^3 < meters^3
     public void convertVolumeUnit(String toUnit, String fromUnit) {
-        if (fromUnit.equals ("centimeters^3") && toUnit.equals ("meters^3")) {
+        if (fromUnit.equals ("cm^3") && toUnit.equals ("m^3")) {
             this.volume = this.volume / 1000000;
-            this.volumeUnit = "meters^3";
-        } else if (fromUnit.equals ("meters^3") && toUnit.equals ("centimeters^3")) {
+            this.volumeUnit = "m^3";
+        } else if (fromUnit.equals ("m^3") && toUnit.equals ("cm^3")) {
             this.volume = this.volume * 1000000;
-            this.volumeUnit = "centimeters^3";
-        } else if (fromUnit.equals ("decimeters^3") && toUnit.equals ("centimeters^3")) {
+            this.volumeUnit = "ccm^3";
+        } else if (fromUnit.equals ("dcm^3") && toUnit.equals ("cm^3")) {
             this.volume = this.volume * 1000;
-            this.volumeUnit = "centimeters^3";
-        } else if (fromUnit.equals ("centimeters^3") && toUnit.equals ("decimeters^3")) {
+            this.volumeUnit = "cm^3";
+        } else if (fromUnit.equals ("cm^3") && toUnit.equals ("dcm^3")) {
             this.volume = this.volume / 1000;
-            this.volumeUnit = "decimeters^3";
-        } else if (fromUnit.equals ("decimeters^3") && toUnit.equals ("meters^3")) {
+            this.volumeUnit = "dcm^3";
+        } else if (fromUnit.equals ("dcm^3") && toUnit.equals ("m^3")) {
             this.volume = this.volume / 1000;
-            this.volumeUnit = "meters^3";
-        } else if (fromUnit.equals ("meters^3") && toUnit.equals ("decimeters^3")) {
+            this.volumeUnit = "m^3";
+        } else if (fromUnit.equals ("m^3") && toUnit.equals ("dcm^3")) {
             this.volume = this.volume * 1000;
-            this.volumeUnit = "decimeters^3";
+            this.volumeUnit = "dcm^3";
         }
     } 
 
@@ -194,27 +202,27 @@ public class ConcentrationEquation extends ModelChangeListener {
                 }
             } else if (attributeName.equals("concentration")) {
                 this.concentration = Double.parseDouble(newValue);
-                if (volume > 0) {
+                /* if (volume > 0) {
                     updateMole();
                 } else if (moles > 0) {
                     updateVolume();
-                }
+                }*/
             } else if (attributeName.equals("volumeUnit")) {
                 String volumeUnitTemp = this.volumeUnit;
                 convertVolumeUnit(newValue, volumeUnitTemp);
-                if (concentration > 0) {
+                /* if (concentration > 0) {
                     updateMole();
                 } else if (moles > 0) {
                     updateConcentration();
-                }
+                }*/
             } else if (attributeName.equals("concentrationUnit")) {
                 String concentrationUnitTemp = this.concentrationUnit;
                 convertConcentrationUnit(newValue, concentrationUnitTemp);
-                if (volume > 0) {
+                /* if (volume > 0) {
                     updateMole();
                 } else if (moles > 0) {
                     updateVolume();
-                }
+                } */
             }
         }
     }
