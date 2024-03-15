@@ -19,9 +19,9 @@ public class ConcentrationEquation extends ModelChangeListener {
     // @Min(value = 0)
     private boolean isEmpty;
 
-    private String volumeUnit = "dcm^3"; 
+    private String volumeUnit = "dm^3"; 
     private String moleUnit = "mol";
-    private String concentrationUnit = "mol/dcm^3";
+    private String concentrationUnit = "mol/dm^3";
 
     // Constructor
     public ConcentrationEquation() {
@@ -115,19 +115,19 @@ public class ConcentrationEquation extends ModelChangeListener {
             this.volumeUnit = "m^3";
         } else if (fromUnit.equals ("m^3") && toUnit.equals ("cm^3")) {
             this.volume = this.volume * 1000000;
-            this.volumeUnit = "ccm^3";
-        } else if (fromUnit.equals ("dcm^3") && toUnit.equals ("cm^3")) {
+            this.volumeUnit = "cm^3";
+        } else if (fromUnit.equals ("dm^3") && toUnit.equals ("cm^3")) {
             this.volume = this.volume * 1000;
             this.volumeUnit = "cm^3";
-        } else if (fromUnit.equals ("cm^3") && toUnit.equals ("dcm^3")) {
+        } else if (fromUnit.equals ("cm^3") && toUnit.equals ("dm^3")) {
             this.volume = this.volume / 1000;
-            this.volumeUnit = "dcm^3";
-        } else if (fromUnit.equals ("dcm^3") && toUnit.equals ("m^3")) {
+            this.volumeUnit = "dm^3";
+        } else if (fromUnit.equals ("dm^3") && toUnit.equals ("m^3")) {
             this.volume = this.volume / 1000;
             this.volumeUnit = "m^3";
-        } else if (fromUnit.equals ("m^3") && toUnit.equals ("dcm^3")) {
+        } else if (fromUnit.equals ("m^3") && toUnit.equals ("dm^3")) {
             this.volume = this.volume * 1000;
-            this.volumeUnit = "dcm^3";
+            this.volumeUnit = "dm^3";
         }
     } 
 
@@ -153,16 +153,16 @@ public class ConcentrationEquation extends ModelChangeListener {
         }
     } */
     public void convertConcentrationUnit(String toUnit, String fromUnit) {
-        if (fromUnit.equals ("mol/dcm^3") && toUnit.equals ("mol/m^3")) {
+        if (fromUnit.equals ("mol/dm^3") && toUnit.equals ("mol/m^3")) {
             this.concentration = this.concentration * 1000;
             this.concentrationUnit = "mol/m^3";
-        } else if (fromUnit.equals ("mol/m^3") && toUnit.equals ("mol/dcm^3")) {
+        } else if (fromUnit.equals ("mol/m^3") && toUnit.equals ("mol/dm^3")) {
             this.concentration = this.concentration / 1000;
-            this.concentrationUnit = "mol/dcm^3";
-        } else if (fromUnit.equals ("mol/cm^3") && toUnit.equals ("mol/dcm^3")) {
+            this.concentrationUnit = "mol/dm^3";
+        } else if (fromUnit.equals ("mol/cm^3") && toUnit.equals ("mol/dm^3")) {
             this.concentration = this.concentration * 1000;
-            this.concentrationUnit = "mol/dcm^3";
-        } else if (fromUnit.equals ("mol/dcm^3") && toUnit.equals ("mol/cm^3")) {
+            this.concentrationUnit = "mol/dm^3";
+        } else if (fromUnit.equals ("mol/dm^3") && toUnit.equals ("mol/cm^3")) {
             this.concentration = this.concentration / 1000;
             this.concentrationUnit = "mol/cm^3";
         } else if (fromUnit.equals ("mol/cm^3") && toUnit.equals ("mol/m^3")) {

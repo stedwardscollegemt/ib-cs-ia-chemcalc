@@ -87,7 +87,7 @@
                             <div class="col-4">
                                 <select disabled class="form-select form-select-lg" id="concentrationUnit" th:field="*{concentrationUnit}" onchange="dropdownHandler()">
                                     <option value="mol/cm^3">mol/cm^3</option>
-                                    <option value="mol/dcm^3">mol/dcm^3</option>
+                                    <option value="mol/dm^3">mol/dm^3</option>
                                     <option value="mol/m^3">mol/m^3</option>
                                 </select>
                             </div>
@@ -98,7 +98,7 @@
                                 <ul class="dropdown-menu dropdown-menu-end">
                                     <li><a class="dropdown-item" href="#"onclick="dropdownHandler('concentrationUnit', 'mol/cm^3')">mol/cm^3</a></li>
                                     <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#" onclick="dropdownHandler('concentrationUnit', 'mol/dcm^3')">mol/dcm^3</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="dropdownHandler('concentrationUnit', 'mol/dm^3')">mol/dm^3</a></li>
                                     <li><hr class="dropdown-divider"></li>
                                     <li><a class="dropdown-item" href="#"onclick="dropdownHandler('concentrationUnit', 'mol/m^3')">mol/m^3</a></li>
                                 </ul>
@@ -107,7 +107,7 @@
 
                     </div>
                     <div class="custom-box">
-                        <h4 for="moles">Moles (M)</h4>
+                        <h4 for="moles">Moles (m)</h4>
                         <div class="row">
                             <div class="col-auto">
                                 <input id="moles" th:field="*{moles}" class="form-control form-control-lg"
@@ -140,7 +140,7 @@
                             <div class="col-4">
                                 <select disabled class="form-select form-select-lg" id="volumeUnit" th:field="*{volumeUnit}" onchange="dropdownHandler()">
                                     <option value="cm^3">cm^3</option>
-                                    <option value="dcm^3">dcm^3</option>
+                                    <option value="dm^3">dm^3</option>
                                     <option value="m^3">m^3</option>
                                 </select>
                             </div>
@@ -151,7 +151,7 @@
                                 <ul class="dropdown-menu dropdown-menu-end">
                                     <li><a class="dropdown-item" href="#" onclick="dropdownHandler('volumeUnit', 'cm^3')">cm^3</a></li>
                                     <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#" onclick="dropdownHandler('volumeUnit', 'dcm^3')">dcm^3</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="dropdownHandler('volumeUnit', 'dm^3')">dm^3</a></li>
                                     <li><hr class="dropdown-divider"></li>
                                     <li><a class="dropdown-item" href="#" onclick="dropdownHandler('volumeUnit', 'm^3')">m^3</a></li>
                                 </ul> 
@@ -170,10 +170,10 @@
                 <div class="custom-box">
                         <p> C = M/V</p>
                         <p> c: This represents the concentration of the solution and is measured in units such as moles per 
-                            decimeter^3 (mol/dcm^3) or moles per centimeter^3 (mol/cm^3), depending on the context. </p>
-                        <p> m: This represents the number of moles (Moles) of the solution. It only has one specific unit (mols) 
+                            cubic decimeter (mol/dm^3) or moles per cubic centimeter (mol/cm^3), depending on the context. </p>
+                        <p> m: This represents the number of moles of the solution. It only has one specific unit (mols) 
                             and does not change at all. </p>
-                        <p> v: This represents the volume of the solution and is measured in decimeters^3 (dcm^3) or any other suitable
+                        <p> v: This represents the volume of the solution and is measured in cubic decimeters (dm^3) or any other suitable
                             unit of volume. </p>
                         <p> To use the concentration equation, input the respective units of all variables.
                             To convert them, input the variable first then choose your initial unit and then the desired unit. </p>
@@ -181,7 +181,7 @@
             </div>
 
             <!-- New card for the interactive rows -->
-            <div class="card mt-3 small-card">
+            <div class="card shadow-lg card mt-3 small-card">
                 <div class="card-body custom-box">
                     <h4>Other Calculators</h4>
                     <div class="interactive-row" onclick="navigateToCalculator('row1')">Home Page</div>
@@ -245,14 +245,16 @@
     }
 
     function navigateToCalculator(row) {
-        // Add your logic to navigate to the respective calculator based on the row clicked
+    if (row === 'row1') {
+        // Redirect to the homepage
+        window.location.href = 'http://localhost:8080/home-page';
+    } else if (row === 'row2'){
+        window.location.href = '/'// replace / with links to the other calculators
+        // Add your logic to navigate to other calculators based on the row clicked
+    } else {
         console.log('Navigate to Calculator:', row);
     }
-    // DONE: Fix the dropdown menus to show the current unit
-    // TODO: Create something to notify the user that the units do not match (optional)
-    // TODO: Navigate to other calculators / homepage
-    // TODO: Create homepage
-    // DONE: Make stylistic changes
+} // TODO: Make title look good
 </script>
 </body>
 </html>

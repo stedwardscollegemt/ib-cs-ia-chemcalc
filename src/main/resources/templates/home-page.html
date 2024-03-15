@@ -13,77 +13,134 @@
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <!-- Temporary stylesheet replacement since, line-11 ain't working... -->
     <style>
         body {
-            background-color: rgb(34, 112, 148);
-            font-family: 'Courier Prime', monospace;
+            --color-4: rgb(48, 88, 106)!important;
+            --color-3: rgb(62, 112, 135)!important;
+            --color-2: rgb(90, 142, 168)!important;
+            --color-1: rgb(117, 170, 195)!important;
+            
+            background-color: var(--color-1);
+            font-family: "Share Tech Mono", monospace;
+            color: white;
         }
+        
 
         /* Added new class for the smaller card */
         .small-card {
-            margin: 0 15px; /* Add some margin for spacing */
+            margin: 0.5rem; /* Add some margin for spacing */
+            background-color: var(--color-2);
         }
 
+        .custom-box {
+            margin: 1rem;
+            padding: 1rem;
+            background-color: var(--color-3);
+        }
+
+        .custom-box2 {
+            margin: 1rem;
+            padding: 1rem;
+            background-color: var(--color-4);
+        }
+
+        .custom-box3 {
+            margin: 0.75rem;
+            padding: 0.75rem;
+            background-color: var(--color-3);
+        }
+        
         /* Added style for the interactive rows */
         .interactive-row {
             cursor: pointer;
             padding: 10px;
             margin: 5px 0;
-            background-color: #ffffff;
+            background-color: var(--color-4);
             border-radius: 5px;
             transition: background-color 0.3s;
-            border: 1px solid #6c757d; /* Added border style */
+            border: 1px solid #3c6275; /* Added border style */
         }
 
         .interactive-row:hover {
-            background-color: #f0f0f0;
+            background-color: rgb(55, 100, 121);
         }
     </style>
 </head>
 <body>
-<div class="container-fluid">
-    <!-- <h3> Concentration Equation </h3> -->
-    <div class="row p-5">
-        <div class="col"> <!-- left column -->
-            <!-- https://getbootstrap.com/docs/5.3/layout/grid/#example -->
-            <div class="card shadow-lg">
-                <div class="card-body">
-                    
+    <div class="container-fluid">
+        <div class="row p-5">
+            <div class="col"> <!-- left column -->
+                <!-- https://getbootstrap.com/docs/5.3/layout/grid/#example -->
+                <div class="card shadow-lg small-card">
+                    <div class="custom-box2">
+                        <h1>ChemiCraft</h1>
+                    </div>
+                    <div class="custom-box3">
+                        <div class="interactive-row" onclick="navigateToCalculator('row1')">Concentration Equation</div>
+                    </div>
+                    <div class="custom-box3">
+                        <div class="interactive-row" onclick="navigateToCalculator('row2')">Calculator 2</div>
+                    </div>
+                    <div class="custom-box3">
+                        <div class="interactive-row" onclick="navigateToCalculator('row3')">Calculator 3</div>
+                    </div>
+                    <div class="custom-box3">
+                        <div class="interactive-row" onclick="navigateToCalculator('row4')">Calculator 4</div>
+                    </div>
+                    <div class="custom-box3">
+                        <div class="interactive-row" onclick="navigateToCalculator('row5')">Calculator 5</div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col"> <!-- Right column -->
-            <!-- New card for the smaller content -->
-            <div class="card shadow-lg small-card">
-                <div class="card-body">
-                    <p>
-                        C = M/V
-                        <br><br>
-                        c: This represents the concentration of the solution and is measured in units such as moles per
-                        liter (mol/L) or grams per liter (g/L), depending on the context.
-                        <br><br>
-                        m: This stands for the mass of the solute, which is the substance being dissolved in the
-                        solution. The unit for mass can be grams (g) or any other appropriate unit of mass.
-                        <br><br>
-                        v: This represents the volume of the solution and is measured in liters (L) or any other suitable
-                        unit of volume.
-                        <br><br>
-                        To use the concentration equation, you need to ensure that the units of mass (m) and volume (v)
-                        are consistent.
-                    </p>
+            <div class="col"> <!-- Right column -->
+                <!-- New card for the smaller content -->
+                <div class="card shadow-lg small-card">
+                    <div class="custom-box">
+                          <p> Welcome to ChemiCraft!!</p>
+                          <p> This is a calculator designed to make your chemical calculations much easier to do. </p>
+                          <p> Here is a bunch of text to take up space ill definitley replace this later on with smt along the lines of 
+                                "Thank you so much for using this thingy ehejnriuewajkdnkehjskdxc" ihrejwkndbvihowefjabh  HILFIWHlknfh wen   ehejnriuewajkdnkehjskdxc
+                                Help me pls herijwndbejwlkndc wejfncb bqhbdnlqk qhwd  fewfb qqjwdhbsn qdqqfwsc texttextetetxtettxtetxttettxttetx
+                                texttextetetxtetetxtetetxtetetxtetetxtetetxtetetxtetetxtetetxtetetxtetxttettxttetx
+                                texttextetetxtetetxtetetxtetetxtetetetxtetetetxtetetetxtetetxtetetxtetetxttettxttetx
+                                texttextetetxtetetxtetetxtetetetxtetetetxtetetetxtetetetxtetetxtetetxttettxttetx
+                                texttextetetxtetetxtetetxtetetetxtetetetxtetetetxtetetetxtetetxttettxttetx
+                                texttextetetxtetetxtetetetxtetetetxtetetetxtetetetxtetetxtetetxttettxttetx
+                                texttextetetxtetetxtetetxtetetetxtetetetxtetetetxtetetetxttettxttetx
+                                texttextetetxtetetxtetetxtetetetxtetetetxtetetetxtetetxttettxttetx
+                                texttextetetxtetetxtetetxtetetetxtetetetxtetetetxttettxttetx
+                                texttextetetxtetetxtetetxtetetetxtetetetxttettxttetx
+                                texttextetetxtetetxtetetxtetetxtetetxttettxttetx
+                                texttextetetxtetetxtetetxtetetxtetetetxtetetetxtetetetxtetetxtetetxtetetxttettxtte
+                                texttextetetxtetetxtetetxtetetxtetetetxtetetetxtetetetxtetetxtetetxtetetxttettxtte
+                                texttextetetxtetetxtetetxtetetxtetetetxtetetetxtetetetxtetetxtetetxtetetxttettxtte
+                                texttextetetxtetetxtetetxtetetxtetetetxtetetetxtetetetxtetetxtetetxtetetxttettxtte
+                                texttextetetxtetetxtetetxtetetxtetetetxtetetetxtetetetxtetetxtetetxtetetxttettxtte
+                          </p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 <script th:src="@{/script/index.js}"></script>
 <script th:inline="javascript">
     
+    function navigateToCalculator(row) {
+    if (row === 'row1') {
+        // Redirect to the homepage
+        window.location.href = 'http://localhost:8080/concentration-equation#';
+    } else if (row === 'row2'){
+        window.location.href = '/'// replace / with links to the other calculators
+        // Add your logic to navigate to other calculators based on the row clicked
+    } else {
+        console.log('Navigate to Calculator:', row);
+    }
+    } // TODO: make filler stuff and make it look nicer
 </script>
 </body>
 </html>

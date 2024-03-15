@@ -11,3 +11,9 @@ public class CalculatorSpringBoot {
         SpringApplication.run(CalculatorSpringBoot.class, args);
     }
 }
+
+// Velocity of light caluclator
+// temperature change 
+// Ideal gas equation
+// Q = mc delta T 
+
