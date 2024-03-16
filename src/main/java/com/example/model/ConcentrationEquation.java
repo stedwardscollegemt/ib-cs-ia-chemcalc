@@ -9,14 +9,15 @@ import com.example.model_observer.ModelChangeListener;
  * source: https://www.geeksforgeeks.org/javabean-class-java/ 
  */
 public class ConcentrationEquation extends ModelChangeListener {
+   
     // Data
-    // @Min(value = 0)
+    @Min(value = 0)
     private double concentration;
-    // @Min(value = 0)
+    @Min(value = 0)
     private double moles;
-    // @Min(value = 0)
+    @Min(value = 0)
     private double volume;
-    // @Min(value = 0)
+    
     private boolean isEmpty;
 
     private String volumeUnit = "dm^3"; 
@@ -80,33 +81,23 @@ public class ConcentrationEquation extends ModelChangeListener {
         this.isEmpty = false;
         if (this.moles > 0 && this.volume > 0) {
             this.concentration = (this.moles / this.volume);
-
         } else if (this.concentration > 0 && this.volume > 0) {
             this.moles = (this.concentration * this.volume);
-
         } else if (this.concentration > 0 && this.moles > 0) {
             this.volume = (this.moles / this.concentration);
-
         }
-
     }
 
     public void updateConcentration() {
-        if (this.volume > 0) {
-            this.concentration = this.moles / this.volume;
-        } 
+        this.concentration = this.moles / this.volume; 
     }
 
     public void updateVolume() {
-        if (this.moles > 0) {
-            this.volume = this.moles / this.concentration;
-        }
+        this.volume = this.moles / this.concentration;
     }
     
     public void updateMole() {
-        if (this.volume > 0) {
-            this.moles = this.volume * this.concentration;
-        }
+        this.moles = this.volume * this.concentration;
     }
     // centimeters^3 < decimeters^3 < meters^3
     public void convertVolumeUnit(String toUnit, String fromUnit) {
@@ -174,12 +165,6 @@ public class ConcentrationEquation extends ModelChangeListener {
         }
     }
 
-    // TODO: Create a method to notify the user that the Units must be changed to be equal. (When a unit is changed, check that
-    // the units are equal)
-    public void checkUnits() {
-
-    }
-
     @Override
     public void onModelChange(String attributeName, String newValue) {
         if(!newValue.isEmpty()) {
@@ -202,27 +187,19 @@ public class ConcentrationEquation extends ModelChangeListener {
                 }
             } else if (attributeName.equals("concentration")) {
                 this.concentration = Double.parseDouble(newValue);
-                /* if (volume > 0) {
-                    updateMole();
-                } else if (moles > 0) {
+                if (moles > 0) {
                     updateVolume();
-                }*/
+                } else if (volume > 0) {
+                    updateMole();
+                }
             } else if (attributeName.equals("volumeUnit")) {
                 String volumeUnitTemp = this.volumeUnit;
                 convertVolumeUnit(newValue, volumeUnitTemp);
-                /* if (concentration > 0) {
-                    updateMole();
-                } else if (moles > 0) {
-                    updateConcentration();
-                }*/
+                
             } else if (attributeName.equals("concentrationUnit")) {
                 String concentrationUnitTemp = this.concentrationUnit;
                 convertConcentrationUnit(newValue, concentrationUnitTemp);
-                /* if (volume > 0) {
-                    updateMole();
-                } else if (moles > 0) {
-                    updateVolume();
-                } */
+
             }
         }
     }

@@ -81,7 +81,7 @@
                         <div class="interactive-row" onclick="navigateToCalculator('row1')">Concentration Equation</div>
                     </div>
                     <div class="custom-box3">
-                        <div class="interactive-row" onclick="navigateToCalculator('row2')">Calculator 2</div>
+                        <div class="interactive-row" onclick="navigateToCalculator('row2')">Ideal Gas Equation</div>
                     </div>
                     <div class="custom-box3">
                         <div class="interactive-row" onclick="navigateToCalculator('row3')">Calculator 3</div>
@@ -133,9 +133,9 @@
     function navigateToCalculator(row) {
     if (row === 'row1') {
         // Redirect to the homepage
-        window.location.href = 'http://localhost:8080/concentration-equation#';
+        window.location.href = 'http://localhost:8080/concentration-equation';
     } else if (row === 'row2'){
-        window.location.href = '/'// replace / with links to the other calculators
+        window.location.href = 'http://localhost:8080/ideal-gas-equation'// replace / with links to the other calculators
         // Add your logic to navigate to other calculators based on the row clicked
     } else {
         console.log('Navigate to Calculator:', row);

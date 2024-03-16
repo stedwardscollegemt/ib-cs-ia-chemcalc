@@ -71,7 +71,7 @@
                 <div class="custom-box2">
                     <h1>Concentration = Moles / Volume</h1>
                 </div>
-                <form id="form-concentration-equation" action="#" th:action="@{/concentration-equation}"
+                <form id="form-concentration-equation" th:action="@{/concentration-equation}"
                         method="POST" th:object="${concentrationEquation}" th:fragment="form">
                     <input th:if="${concentrationEquation.isEmpty}" id="is-empty" type="text" value="true" hidden/>
                     <input th:if="${!concentrationEquation.isEmpty}" id="is-empty" type="text" value="false"
@@ -185,7 +185,7 @@
                 <div class="card-body custom-box">
                     <h4>Other Calculators</h4>
                     <div class="interactive-row" onclick="navigateToCalculator('row1')">Home Page</div>
-                    <div class="interactive-row" onclick="navigateToCalculator('row2')">Calculator 2</div>
+                    <div class="interactive-row" onclick="navigateToCalculator('row2')">Ideal Gas Equation</div>
                     <div class="interactive-row" onclick="navigateToCalculator('row3')">Calculator 3</div>
                 </div>
             </div>
@@ -249,7 +249,7 @@
         // Redirect to the homepage
         window.location.href = 'http://localhost:8080/home-page';
     } else if (row === 'row2'){
-        window.location.href = '/'// replace / with links to the other calculators
+        window.location.href = 'http://localhost:8080/ideal-gas-equation'// replace / with links to the other calculators
         // Add your logic to navigate to other calculators based on the row clicked
     } else {
         console.log('Navigate to Calculator:', row);
