@@ -14,6 +14,5 @@ public class CalculatorSpringBoot {
 
 // Velocity of light caluclator
 // temperature change 
-// Ideal gas equation
 // Q = mc delta T 
 
