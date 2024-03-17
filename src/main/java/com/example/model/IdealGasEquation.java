@@ -8,20 +8,19 @@ import com.example.model_observer.ModelChangeListener;
 
 public class IdealGasEquation extends ModelChangeListener { // PV = nRT
 
-    @Min(value = 0)
     private double pressure; // pressure Pa, kPa, atm
-    @Min(value = 0)
+
     private double volume; // volume militres, litres, dm^3, m^3
-    @Min(value = 0)
+
     private double numberOfMoles; // number of moles
-    @Min(value = 0)
+
     private double temperature; // temperature Kelvin
 
     public static final double R = 8.314; // R = molar gas constant
 
     private boolean isEmpty;
     
-    private String pressureUnit = "atm";
+    private String pressureUnit = "kPa";
     public String volumeUnit = "L";
     private String numberOfMolesUnit = "mol";
     public String RUnit = "J/K/mol";
