@@ -12,7 +12,6 @@ import com.example.model.ConcentrationEquation;
 import com.example.model_observer.ModelChangeNotifier;
 
 /**
- * TODO: Have a section in Criterion C for RESTful Controllers
  * source: https://codeburst.io/rest-controller-building-rest-api-638d3ff4fa71
  */
 @Controller // tells the program that my class is-a (inheritence) controller

@@ -5,8 +5,7 @@ import javax.validation.constraints.Min;
 import com.example.model_observer.ModelChangeListener;
 
 /**
- * TODO: Have a section in Criterion C for JavaBeans
- * source: https://www.geeksforgeeks.org/javabean-class-java/ 
+ * Utilizes JavaBeans https://www.geeksforgeeks.org/javabean-class-java/ 
  */
 public class ConcentrationEquation extends ModelChangeListener {
    

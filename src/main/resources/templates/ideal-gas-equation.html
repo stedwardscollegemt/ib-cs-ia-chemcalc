@@ -14,7 +14,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    <!-- Temporary stylesheet replacement since, line-11 isn't working... -->
     <style>
         body {
             --color-4: rgb(48, 88, 106)!important;
@@ -32,18 +31,21 @@
         .small-card {
             margin: 0.5rem; /* Add some margin for spacing */
             background-color: var(--color-2);
+            border-radius: 8px;
         }
 
         .custom-box {
             margin: 1rem;
             padding: 1rem;
             background-color: var(--color-3);
+            border-radius: 8px;
         }
 
         .custom-box2 {
             margin: 1rem;
             padding: 1rem;
             background-color: var(--color-4);
+            border-radius: 8px;
         }
 
         /* Added style for the interactive rows */
@@ -52,7 +54,7 @@
             padding: 10px;
             margin: 5px 0;
             background-color: var(--color-4);
-            border-radius: 5px;
+            border-radius: 8px;
             transition: background-color 0.3s;
             border: 1px solid #3c6275; /* Added border style */
         }
@@ -69,7 +71,7 @@
             <!-- https://getbootstrap.com/docs/5.3/layout/grid/#example -->
             <div class="card shadow-lg small-card">
                 <div class="custom-box2">
-                    <h1>PV = nRT</h1>
+                    <h1 class='text-center'>PV = nRT</h1>
                 </div>
                 <form id="form-ideal-gas-equation" th:action="@{/ideal-gas-equation}"
                         method="POST" th:object="${idealGasEquation}" th:fragment="form">
@@ -163,11 +165,10 @@
                     </div>
                     <div class="custom-box">
                         <h4 for="R">Molar Gas Constant (R)</h4>
-                         <!-- <div class="row">
+                         <div class="row">
                             <div class="col-auto">
-                                <input id="R" th:field="*{R}" class="form-control form-control-lg"
-                                        th:classappend="${#fields.hasErrors('${idealGasEquation.R}') ? 'is-invalid' : ''}"
-                                        aria-describedby="R-hint" oninput="inputHandler('R')">
+                                <input disabled id="R" placeholder="8.314" class="form-control form-control-lg"
+                                        aria-describedby="R-hint">
                             </div>
                             <div class="col-4">
                                 <select disabled class="form-select form-select-lg" id="RUnit">
@@ -179,10 +180,10 @@
                                 data-bs-toggle="dropdown" aria-expanded="false">Unit
                                 </option>
                                 <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="dropdown-item" href="#" onclick="dropdownHandler('RUnit', 'J/K/mol')">J/K/mol</a></li>
+                                    <li><a class="dropdown-item" href="#">J/K/mol</a></li>
                                 </ul> 
                             </div>
-                        </div> -->
+                        </div>
                     </div>
                     <div class="custom-box">
                         <h4 for="temperature">Temperature (T)</h4>
@@ -220,13 +221,13 @@
             <!-- New card for the smaller content -->
             <div class="card shadow-lg small-card">
                 <div class="custom-box">
-                        <p>PV = nRT</p>
+                        <p class='text-center'>PV = nRT</p>
                         <p>P: This represents the pressure of the gas and is typically measured in units such as atmospheres (atm) or pascals (Pa). </p>
                         <p>V: This stands for the volume occupied by the gas and is usually measured in liters (L) or cubic meters (m^3).</p>
                         <p>n: This represents the amount of substance of the gas and is usually measured in moles (mol).</p>
                         <p>R: This is the ideal gas constant, which has a value of 8.314 J/(mol·K). The units of R depend on the units of pressure, volume, and temperature in the equation.</p>
                         <p>T: This represents the absolute temperature of the gas and is typically measured in kelvin (K).</p>
-                        <p>To use the ideal gas equation, you need to ensure that the units of pressure, volume, and temperature are consistent and match the units of the ideal gas constant (R). P must be in kPa, V must be in L, and T must be in K.</p>
+                        <p>To use the ideal gas equation, you need to ensure that the units of pressure, volume, and temperature are consistent and match the units of the ideal gas constant (R). P must be in kPa, V must be in L, and T must be in K.</p>                      
                 </div>
             </div>
 

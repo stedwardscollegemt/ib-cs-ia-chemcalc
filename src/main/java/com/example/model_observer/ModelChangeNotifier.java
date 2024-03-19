@@ -29,9 +29,6 @@ public class ModelChangeNotifier {
         }
     }
 
-    /**
-     * TODO: Highlight this application of the linear search in Criterion C
-     */
     public static<T extends ModelChangeListener> T findListenerByClass(Class<T> listenerClass) {
         int index = listeners.size() - 1;
         while (index >= 0) {

@@ -14,7 +14,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    <!-- Temporary stylesheet replacement since, line-11 isn't working... -->
     <style>
         body {
             --color-4: rgb(48, 88, 106)!important;
@@ -32,18 +31,21 @@
         .small-card {
             margin: 0.5rem; /* Add some margin for spacing */
             background-color: var(--color-2);
+            border-radius: 8px;
         }
 
         .custom-box {
             margin: 1rem;
             padding: 1rem;
             background-color: var(--color-3);
+            border-radius: 8px;
         }
 
         .custom-box2 {
             margin: 1rem;
             padding: 1rem;
             background-color: var(--color-4);
+            border-radius: 8px;
         }
 
         /* Added style for the interactive rows */
@@ -52,7 +54,7 @@
             padding: 10px;
             margin: 5px 0;
             background-color: var(--color-4);
-            border-radius: 5px;
+            border-radius: 8px;
             transition: background-color 0.3s;
             border: 1px solid #3c6275; /* Added border style */
         }
@@ -69,7 +71,7 @@
             <!-- https://getbootstrap.com/docs/5.3/layout/grid/#example -->
             <div class="card shadow-lg small-card">
                 <div class="custom-box2">
-                    <h1>Concentration = Moles / Volume</h1>
+                    <h1 class='text-center'>C = m / V</h1>
                 </div>
                 <form id="form-concentration-equation" th:action="@{/concentration-equation}"
                         method="POST" th:object="${concentrationEquation}" th:fragment="form">
@@ -165,22 +167,19 @@
             </div>
         </div>
         <div class="col"> <!-- Right column -->
-            <!-- New card for the smaller content -->
             <div class="card shadow-lg small-card">
                 <div class="custom-box">
-                        <p> C = M/V</p>
-                        <p> c: This represents the concentration of the solution and is measured in units such as moles per 
+                        <p class='text-center'>C = m / V</p>
+                        <p> C: This represents the concentration of the solution and is measured in units such as moles per 
                             cubic decimeter (mol/dm^3) or moles per cubic centimeter (mol/cm^3), depending on the context. </p>
                         <p> m: This represents the number of moles of the solution. It only has one specific unit (mols) 
                             and does not change at all. </p>
-                        <p> v: This represents the volume of the solution and is measured in cubic decimeters (dm^3) or any other suitable
+                        <p> V: This represents the volume of the solution and is measured in cubic decimeters (dm^3) or any other suitable
                             unit of volume. </p>
                         <p> To use the concentration equation, input the respective units of all variables.
                             To convert them, input the variable first then choose your initial unit and then the desired unit. </p>
                 </div>
             </div>
-
-            <!-- New card for the interactive rows -->
             <div class="card shadow-lg card mt-3 small-card">
                 <div class="card-body custom-box">
                     <h4>Other Calculators</h4>
