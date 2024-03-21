@@ -12,7 +12,3 @@ public class CalculatorSpringBoot {
     }
 }
 
-// Velocity of light caluclator
-// temperature change 
-// Q = mc delta T 
-
