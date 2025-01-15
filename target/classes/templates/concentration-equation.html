@@ -198,7 +198,9 @@
 <script th:inline="javascript">
     /*<![CDATA[*/
     function inputHandler(id) {
+        // TODO: add a press enter to confirm recalc
         var input = document.getElementById(id).value;
+
 
         // Make an AJAX request to the server-side endpoint
         var xhr = new XMLHttpRequest();
